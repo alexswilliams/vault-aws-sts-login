@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "node-fetch": {
+      "versions": "3.x.x",
+      "reason": "Substantial breaking change which would force the entire project to be an es module, which isn't where typescript is at right now."
+    }
+  }
+}
