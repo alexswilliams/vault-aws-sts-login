@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { parse, stringify } from "ini";
 import type { Response } from "node-fetch";
 import { homedir } from "os";
@@ -123,6 +123,10 @@ function updateAwsCredentialsFile(
     expiry: expiryFromDurationSeconds(stsData.leaseDurationSeconds),
     role,
   };
+
+  if (!existsSync(join(homedir(), ".aws"))) {
+    mkdirSync(join(homedir(), ".aws"), 0o755);
+  }
 
   const asIni = stringify(credentials, { section: "", whitespace: true });
   writeFileSync(join(homedir(), ".aws", "credentials"), asIni);
