@@ -32,6 +32,11 @@ async function run() {
     printUsage();
     process.exit(1);
   }
+  if (!vaultUrl.startsWith("https://")) {
+    console.error(
+      `\nVault URL ('${vaultUrl}') must begin with https://`.red.bold
+    );
+  }
   VAULT_URL = vaultUrl;
 
   if (mountPrefix) VAULT_MOUNT_PREFIX = mountPrefix;
