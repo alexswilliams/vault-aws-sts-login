@@ -4,6 +4,7 @@ import { stringify } from "querystring";
 import { chooseAccount, chooseRole } from "./role-selection";
 import { assumeRole, getSigninToken } from "./sts";
 import { vaultLogin } from "./vault-login";
+import { writeFile } from "fs";
 
 export let VAULT_URL: string;
 export let VAULT_MOUNT_PREFIX: string = "aws/";
@@ -57,6 +58,7 @@ async function run() {
     account = await chooseAccount(vaultToken);
     if (!account) process.exit(3);
   }
+  writeFile('current_aws_account', account, function(err) {} );
 
   if (!role) {
     role = await chooseRole(vaultToken, account);
