@@ -10,7 +10,7 @@ This is a utility for precisely the following scenario:
 
 ## Pre-requisites
 Depends on:
- - an installation of Node 14 or above (this repo supplies an `.nvmrc` file for this purpose)
+ - an installation of Node 16 or above (this repo supplies an `.nvmrc` file for this purpose)
  - to have all packages installed.
 
 ```bash
